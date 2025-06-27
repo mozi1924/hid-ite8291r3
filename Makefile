@@ -4,7 +4,8 @@ MODVER = 0.0
 
 obj-m += $(MODNAME).o
 
-KDIR = /lib/modules/$(shell uname -r)/build
+KVER = $(shell uname -r)
+KDIR = /lib/modules/$(KVER)/build
 MDIR = /usr/src/$(MODNAME)-$(MODVER)
 
 all:
