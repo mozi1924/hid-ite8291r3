@@ -14,6 +14,7 @@
 #include <linux/string.h>
 #include <linux/types.h>
 #include <linux/usb.h>
+#include <linux/version.h>
 #include <uapi/linux/uleds.h>
 
 /* ========================================================================== */
@@ -39,6 +40,15 @@
 #define ITE8291R3_REP_BRIGHTNESS_OFFSET 5
 
 #define ITE8291R3_FW_VERSION_LENGTH 4
+
+/* ========================================================================== */
+
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(6, 15, 0)
+static inline int del_timer_sync(struct timer_list *timer)
+{
+	return timer_delete_sync(timer);
+}
+#endif
 
 /* ========================================================================== */
 
